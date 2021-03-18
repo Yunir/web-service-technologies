@@ -24,14 +24,14 @@ public class PersonWebService {
     @WebMethod(operationName = "getAllPersons")
     public List<Person> getAllPersons() {
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
-        return dao.getAllPersons();
+        return dao.getPersons();
     }
 
-    @WebMethod(operationName = "getPersonsByName")
+    /*@WebMethod(operationName = "getPersonsByName")
     public List<Person> getPersonsByName(@WebParam(name = "personName") String name) {
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
         return dao.getPersonsByName(name);
-    }
+    }*/
 
     private Connection getConnection() {
         Connection result = null;

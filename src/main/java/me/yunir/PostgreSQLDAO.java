@@ -13,6 +13,12 @@ import java.util.logging.Logger;
  * Data Access Object
  */
 public class PostgreSQLDAO {
+    Connection c;
+
+    public PostgreSQLDAO(Connection c) {
+        this.c = c;
+    }
+
     public List<Person> getPersons() {
         List<Person> persons = new ArrayList<>();
         try (Connection connection = ConnectionUtil.getConnection()) {
