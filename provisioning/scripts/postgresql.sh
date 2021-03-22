@@ -1,11 +1,11 @@
 #!/bin/sh -e
 
 # Edit the following to change the name of the database user that will be created:
-APP_DB_USER=myapp
-APP_DB_PASS=dbpass
+APP_DB_USER=manager
+APP_DB_PASS=ranger
 
 # Edit the following to change the name of the database that is created (defaults to the user name)
-APP_DB_NAME=$APP_DB_USER
+APP_DB_NAME=shop
 
 # Edit the following to change the version of PostgreSQL that is installed
 PG_VERSION=9.6
@@ -93,26 +93,27 @@ CREATE DATABASE $APP_DB_NAME WITH OWNER=$APP_DB_USER
                                   TEMPLATE=template0;
 EOF
 
-cat << EOF | PGUSER=myapp PGPASSWORD=dbpass psql -h localhost myapp
-CREATE TABLE "persons" (
-  id bigserial NOT NULL,
+cat << EOF | PGUSER=$APP_DB_USER PGPASSWORD=$APP_DB_PASS psql -h localhost $APP_DB_NAME
+CREATE TABLE "customers" (
+  id bigserial PRIMARY KEY,
   name character varying(200),
   surname character varying(200),
-  age integer,
-  CONSTRAINT "Persons_pkey" PRIMARY KEY (id)
+  email character varying(200),
+  phone character varying(50),
+  age integer
 );
 
-INSERT INTO persons(name, surname, age) values ('Петр', 'Петров', 25);
-INSERT INTO persons(name, surname, age) values ('Владимир', 'Иванов', 26);
-INSERT INTO persons(name, surname, age) values ('Иван', 'Иванов', 27);
-INSERT INTO persons(name, surname, age) values ('Иммануил', 'Кант', 28);
-INSERT INTO persons(name, surname, age) values ('Джордж', 'Клуни', 29);
-INSERT INTO persons(name, surname, age) values ('Билл', 'Рубцов', 30);
-INSERT INTO persons(name, surname, age) values ('Марк', 'Марков', 31);
-INSERT INTO persons(name, surname, age) values ('Галина', 'Матвеева', 32);
-INSERT INTO persons(name, surname, age) values ('Святослав', 'Павлов', 33);
-INSERT INTO persons(name, surname, age) values ('Ольга', 'Бергольц', 34);
-INSERT INTO persons(name, surname, age) values ('Лев', 'Рабинович', 35);
+INSERT INTO customers(name, surname, email, phone, age) values ('Петр', 'Петров', 'Петр@яндекс.ру', '+79991234455', 25);
+INSERT INTO customers(name, surname, email, phone, age) values ('Владимир', 'Иванов', 'Владимир@яндекс.ру', '+79991234455', 26);
+INSERT INTO customers(name, surname, email, phone, age) values ('Иван', 'Иванов', 'Иван@яндекс.ру', '+79991234455', 27);
+INSERT INTO customers(name, surname, email, phone, age) values ('Иммануил', 'Кант', 'Иммануил@яндекс.ру', '+79991234455', 28);
+INSERT INTO customers(name, surname, email, phone, age) values ('Джордж', 'Клуни', 'Джордж@яндекс.ру', '+79991234455', 29);
+INSERT INTO customers(name, surname, email, phone, age) values ('Билл', 'Рубцов', 'Билл@яндекс.ру', '+79991234455', 30);
+INSERT INTO customers(name, surname, email, phone, age) values ('Марк', 'Марков', 'Марк@яндекс.ру', '+79991234455', 31);
+INSERT INTO customers(name, surname, email, phone, age) values ('Галина', 'Матвеева', 'Галина@яндекс.ру', '+79991234455', 32);
+INSERT INTO customers(name, surname, email, phone, age) values ('Святослав', 'Павлов', 'Святослав@яндекс.ру', '+79991234455', 33);
+INSERT INTO customers(name, surname, email, phone, age) values ('Ольга', 'Бергольц', 'Ольга@яндекс.ру', '+79991234455', 34);
+INSERT INTO customers(name, surname, email, phone, age) values ('Лев', 'Рабинович', 'Лев@яндекс.ру', '+79991234455', 35);
 EOF
 
 # Tag the provision time:

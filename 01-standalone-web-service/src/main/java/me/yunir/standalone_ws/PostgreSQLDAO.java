@@ -14,12 +14,14 @@ public class PostgreSQLDAO {
         List<Person> persons = new ArrayList<>();
         try (Connection connection = ConnectionUtil.getConnection()) {
             Statement stmt = connection.createStatement();
-            ResultSet rs = stmt.executeQuery("select * from persons");
+            ResultSet rs = stmt.executeQuery("select * from customers");
             while (rs.next()) {
                 String name = rs.getString("name");
                 String surname = rs.getString("surname");
+                String email = rs.getString("email");
+                String phone = rs.getString("phone");
                 int age = rs.getInt("age");
-                Person person = new Person(name, surname, age);
+                Person person = new Person(name, surname, email, phone, age);
                 persons.add(person);
             }
         } catch (SQLException ex) {
