@@ -1,0 +1,12 @@
+---
+- name: setup environment for web service technologies laboratory work
+  hosts: all
+  tasks:
+    - name: hello
+      shell: echo hi
+
+#  roles:
+#    - postgresql
+#    - glassfish
+
+# ansible --inventory=.vagrant/provisioners/ansible/inventory/vagrant_ansible_inventory all -m shell -a "echo hello"
