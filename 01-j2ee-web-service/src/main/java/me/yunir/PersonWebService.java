@@ -18,13 +18,14 @@ import javax.sql.DataSource;
  */
 @WebService(serviceName = "PersonService")
 public class PersonWebService {
-    @Resource(lookup = "jdbc/ifmo-ws")
-    private DataSource dataSource;
+    /*@Resource(lookup = "jdbc/ifmo-ws")
+    private DataSource dataSource;*/
 
     @WebMethod(operationName = "getAllPersons")
-    public List<Person> getAllPersons() {
-        PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
-        return dao.getPersons();
+    public String getAllPersons() {
+        //PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
+        //return dao.getPersons();
+        return "hello!";
     }
 
     /*@WebMethod(operationName = "getPersonsByName")
@@ -33,7 +34,7 @@ public class PersonWebService {
         return dao.getPersonsByName(name);
     }*/
 
-    private Connection getConnection() {
+    /*private Connection getConnection() {
         Connection result = null;
         try {
             result = dataSource.getConnection();
@@ -41,5 +42,5 @@ public class PersonWebService {
             Logger.getLogger(PersonWebService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return result;
-    }
+    }*/
 }

@@ -5,23 +5,14 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.yunir</groupId>
-    <artifactId>my-web-service</artifactId>
-    <version>0.0.1</version>
-    <name>My Web Service</name>
-    <packaging>war</packaging>
+    <artifactId>web-service-technologies</artifactId>
+    <version>1.0</version>
+    <packaging>pom</packaging>
+    <name>web-service-technologies</name>
 
-    <properties>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <junit.version>5.7.1</junit.version>
-    </properties>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.2-1003-jdbc4</version>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>01-standalone-web-service</module>
+        <module>01-j2ee-web-service</module>
+    </modules>
 
 </project>
