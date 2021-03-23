@@ -8,13 +8,12 @@
     <artifactId>web-service-technologies</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
-    <name>web-service-technologies</name>
 
     <modules>
-        <module>01-standalone-web-service</module>
-        <module>01-j2ee-web-service</module>
-        <module>01-client-for-web-service</module>
-        <module>01-shared-code</module>
+        <module>01-client-side</module>
+        <module>01-server-side-shared</module>
+        <module>01-server-side-j2ee</module>
+        <module>01-server-side-standalone</module>
     </modules>
 
 </project>
