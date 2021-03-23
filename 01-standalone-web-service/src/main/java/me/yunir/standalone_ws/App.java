@@ -1,5 +1,7 @@
 package me.yunir.standalone_ws;
 
+import me.yunir.shared.PersonWebService;
+
 import javax.xml.ws.Endpoint;
 
 public class App {

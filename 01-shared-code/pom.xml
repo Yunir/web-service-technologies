@@ -5,8 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>me.yunir</groupId>
-    <artifactId>standalone-ws</artifactId>
-    <version>0.2</version>
+    <artifactId>shared</artifactId>
+    <version>1.0</version>
+    <name>01-shared-code</name>
 
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -15,27 +16,7 @@
     </properties>
 
     <dependencies>
-        <dependency>
-            <groupId>me.yunir</groupId>
-            <artifactId>shared</artifactId>
-            <version>1.0</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>webservices-rt</artifactId>
-            <version>1.4</version>
-            <scope>compile</scope>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.xml.bind</groupId>
-            <artifactId>jaxb-impl</artifactId>
-            <version>2.2.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>9.2-1003-jdbc4</version>
-        </dependency>
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>

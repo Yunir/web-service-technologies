@@ -1,4 +1,4 @@
-package me.yunir.standalone_ws;
+package me.yunir.shared;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Утилитный класс для создания подключений к базе данных
+ */
 public class ConnectionUtil {
     private static final String JDBC_URL = "jdbc:postgresql://localhost:15432/shop";
     private static final String JDBC_USER = "manager";

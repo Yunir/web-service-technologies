@@ -1,4 +1,4 @@
-package me.yunir.standalone_ws;
+package me.yunir.shared;
 
 import java.util.List;
 import javax.jws.WebMethod;

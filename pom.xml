@@ -13,6 +13,8 @@
     <modules>
         <module>01-standalone-web-service</module>
         <module>01-j2ee-web-service</module>
+        <module>01-client-for-web-service</module>
+        <module>01-shared-code</module>
     </modules>
 
 </project>

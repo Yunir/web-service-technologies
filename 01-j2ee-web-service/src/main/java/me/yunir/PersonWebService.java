@@ -1,15 +1,11 @@
 package me.yunir;
 
-import java.sql.Connection;
-import java.sql.SQLException;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.annotation.Resource;
+import me.yunir.shared.Person;
+import me.yunir.shared.PostgreSQLDAO;
+
 import javax.jws.WebMethod;
-import javax.jws.WebParam;
 import javax.jws.WebService;
-import javax.sql.DataSource;
+import java.util.List;
 
 /**
  * Веб-сервис.
@@ -22,10 +18,9 @@ public class PersonWebService {
     private DataSource dataSource;*/
 
     @WebMethod(operationName = "getAllPersons")
-    public String getAllPersons() {
-        //PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
-        //return dao.getPersons();
-        return "hello!";
+    public List<Person> getAllPersons() {
+        PostgreSQLDAO dao = new PostgreSQLDAO();
+        return dao.getPersons();
     }
 
     /*@WebMethod(operationName = "getPersonsByName")
