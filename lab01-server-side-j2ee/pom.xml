@@ -6,7 +6,7 @@
 
     <groupId>me.yunir</groupId>
     <artifactId>lab01-server-side-j2ee</artifactId>
-    <version>0.4.1</version>
+    <version>0.5.2</version>
     <packaging>war</packaging>
 
     <properties>
@@ -41,6 +41,23 @@
             <groupId>javax.jws</groupId>
             <artifactId>javax.jws-api</artifactId>
             <version>1.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>webservices-rt</artifactId>
+            <version>1.4</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.2.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.main.extras</groupId>
+            <artifactId>glassfish-embedded-all</artifactId>
+            <version>3.1.2.2</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
