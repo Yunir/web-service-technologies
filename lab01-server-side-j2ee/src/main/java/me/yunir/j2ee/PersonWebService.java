@@ -36,4 +36,28 @@ public class PersonWebService implements PersonWebServiceInterface {
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection(dataSource));
         return dao.getPersonsByName(name);
     }
+
+    @WebMethod(operationName = "getPersonsBySurname")
+    public List<Person> getPersonsBySurname(@WebParam(name = "personSurname") String surname) {
+        PostgreSQLDAO dao = new PostgreSQLDAO(getConnection(dataSource));
+        return dao.getPersonsBySurname(surname);
+    }
+
+    @WebMethod(operationName = "getPersonsByEmail")
+    public List<Person> getPersonsByEmail(@WebParam(name = "personEmail") String email) {
+        PostgreSQLDAO dao = new PostgreSQLDAO(getConnection(dataSource));
+        return dao.getPersonsByEmail(email);
+    }
+
+    @WebMethod(operationName = "getPersonsByPhone")
+    public List<Person> getPersonsByPhone(@WebParam(name = "personPhone") String phone) {
+        PostgreSQLDAO dao = new PostgreSQLDAO(getConnection(dataSource));
+        return dao.getPersonsByPhone(phone);
+    }
+
+    @WebMethod(operationName = "getPersonsByAge")
+    public List<Person> getPersonsByAge(@WebParam(name = "personAge") String age) {
+        PostgreSQLDAO dao = new PostgreSQLDAO(getConnection(dataSource));
+        return dao.getPersonsByAge(age);
+    }
 }

@@ -6,7 +6,7 @@
 
     <groupId>me.yunir</groupId>
     <artifactId>lab01-server-side-j2ee</artifactId>
-    <version>0.5.2</version>
+    <version>1.0</version>
     <packaging>war</packaging>
 
     <properties>
@@ -18,7 +18,7 @@
         <dependency>
             <groupId>me.yunir</groupId>
             <artifactId>lab01-server-side-shared</artifactId>
-            <version>1.2</version>
+            <version>1.5</version>
         </dependency>
         <dependency>
             <groupId>javax</groupId>

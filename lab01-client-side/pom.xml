@@ -6,7 +6,7 @@
 
     <groupId>me.yunir</groupId>
     <artifactId>lab01-client-side</artifactId>
-    <version>0.5</version>
+    <version>1.0</version>
 
     <properties>
         <maven.compiler.target>1.8</maven.compiler.target>
