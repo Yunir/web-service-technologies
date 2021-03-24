@@ -20,7 +20,7 @@ import static me.yunir.j2ee.ConnectionUtil.getConnection;
  */
 @WebService(serviceName = "PersonService")
 public class PersonWebService implements PersonWebServiceInterface {
-    @Resource(lookup = "jdbc/ifmo-ws")
+    @Resource(lookup = "jdbc/shop")
     private DataSource dataSource;
 
     @Override

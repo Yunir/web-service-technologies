@@ -10,10 +10,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>01-client-side</module>
-        <module>01-server-side-shared</module>
-        <module>01-server-side-j2ee</module>
-        <module>01-server-side-standalone</module>
+        <module>lab01-client-side</module>
+        <module>lab01-server-side-shared</module>
+        <module>lab01-server-side-j2ee</module>
+        <module>lab01-server-side-standalone</module>
     </modules>
 
 </project>
