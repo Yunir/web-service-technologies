@@ -38,8 +38,22 @@ public class PostgreSQLDAO {
         return persons;
     }
 
-    public List<Person> getPersonsByName(String name) {
-        //TODO: implement it
-        return null;
+    public List<Person> getPersonsByName(String custom_name) {
+        List<Person> persons = new ArrayList<>();
+        try (Statement stmt = dbConnection.createStatement()) {
+            ResultSet rs = stmt.executeQuery("select * from customers where name='" + custom_name + "'");
+            while (rs.next()) {
+                String name = rs.getString("name");
+                String surname = rs.getString("surname");
+                String email = rs.getString("email");
+                String phone = rs.getString("phone");
+                int age = rs.getInt("age");
+                Person person = new Person(name, surname, email, phone, age);
+                persons.add(person);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PostgreSQLDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return persons;
     }
 }

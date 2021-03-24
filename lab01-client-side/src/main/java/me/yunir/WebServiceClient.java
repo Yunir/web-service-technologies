@@ -11,7 +11,7 @@ public class WebServiceClient {
     public static void main(String[] args) throws MalformedURLException {
         URL url = new URL("http://localhost:8080/PersonService?wsdl");
         PersonService personService = new PersonService(url);
-        List<Person> persons = personService.getPersonWebServicePort().getAllPersons();
+        List<Person> persons = personService.getPersonWebServicePort().getPersonsByName("Лев");
         for (Person person : persons) {
             System.out.println("name: " + person.getName() +
                     ", surname: " + person.getSurname() +
