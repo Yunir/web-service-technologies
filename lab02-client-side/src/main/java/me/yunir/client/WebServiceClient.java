@@ -27,6 +27,16 @@ public class WebServiceClient {
                 "+71112223344",
                 63);
         System.out.println("Added person id: " + personId);
+        int opCode = personService.getPersonWebServicePort().changePerson(
+                personId,
+                "Mary",
+                "Fedorovna",
+                "Mary.Fedorovna@gmail.com",
+                "+71112223344",
+                63);
+        System.out.println("Updated person id: " + personId + "; Operation code: " + opCode);
+        opCode = personService.getPersonWebServicePort().removePerson(personId);
+        System.out.println("Removed person id: " + personId + "; Operation code: " + opCode);
 
 
     }

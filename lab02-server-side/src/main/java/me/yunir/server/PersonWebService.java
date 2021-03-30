@@ -32,7 +32,7 @@ public class PersonWebService {
 
     @WebMethod(operationName = "changePerson")
     public int changePerson(
-            @WebParam(name = "personId") int id,
+            @WebParam(name = "personId") long id,
             @WebParam(name = "personName") String name,
             @WebParam(name = "personSurname") String surname,
             @WebParam(name = "personEmail") String email,
@@ -44,7 +44,7 @@ public class PersonWebService {
     }
 
     @WebMethod(operationName = "removePerson")
-    public int removePerson(@WebParam(name = "personId") int id) {
+    public int removePerson(@WebParam(name = "personId") long id) {
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
         return dao.removePersons(id);
     }
