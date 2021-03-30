@@ -27,8 +27,8 @@ public class PersonWebService {
             @WebParam(name = "personPhone") String phone,
             @WebParam(name = "personAge") int age
     ) {
-
-        return -1;
+        PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
+        return dao.addPersons(name, surname, email, phone, age);
     }
 
     @WebMethod(operationName = "changePerson")
@@ -40,14 +40,14 @@ public class PersonWebService {
             @WebParam(name = "personPhone") String phone,
             @WebParam(name = "personAge") int age
     ) {
-
-        return -1;
+        PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
+        return dao.changePersons(id, name, surname, email, phone, age);
     }
 
     @WebMethod(operationName = "removePerson")
     public int removePerson(@WebParam(name = "personId") int id) {
-
-        return -1;
+        PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
+        return dao.removePersons(id);
     }
 
     @WebMethod(operationName = "getAllPersons")

@@ -98,4 +98,16 @@ public class PostgreSQLDAO {
         }
         return persons;
     }
+
+    public int addPersons(String name, String surname, String email, String phone, int age) {
+        return 0;
+    }
+
+    public int changePersons(int id, String name, String surname, String email, String phone, int age) {
+        return 0;
+    }
+
+    public int removePersons(int id) {
+        return 0;
+    }
 }
