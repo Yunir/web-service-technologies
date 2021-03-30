@@ -44,6 +44,12 @@ public class PersonWebService {
         return -1;
     }
 
+    @WebMethod(operationName = "removePerson")
+    public int removePerson(@WebParam(name = "personId") int id) {
+
+        return -1;
+    }
+
     @WebMethod(operationName = "getAllPersons")
     public List<Person> getAllPersons() {
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
