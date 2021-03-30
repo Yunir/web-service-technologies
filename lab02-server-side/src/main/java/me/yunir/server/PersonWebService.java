@@ -17,16 +17,14 @@ import static me.yunir.server.ConnectionUtil.getConnection;
  * Содержит инъекцию источника данных, настроенного на стороне сервера приложений.
  */
 @WebService(serviceName = "PersonService")
-public class PersonWebService implements PersonWebServiceInterface {
+public class PersonWebService {
 
-    @Override
     @WebMethod(operationName = "getAllPersons")
     public List<Person> getAllPersons() {
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
         return dao.getPersons();
     }
 
-    @Override
     @WebMethod(operationName = "getPersonsByName")
     public List<Person> getPersonsByName(@WebParam(name = "personName") String name) {
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
