@@ -19,6 +19,18 @@ import static me.yunir.server.ConnectionUtil.getConnection;
 @WebService(serviceName = "PersonService")
 public class PersonWebService {
 
+    @WebMethod(operationName = "addPerson")
+    public int addPerson(
+            @WebParam(name = "personName") String name,
+            @WebParam(name = "personSurname") String surname,
+            @WebParam(name = "personEmail") String email,
+            @WebParam(name = "personPhone") String phone,
+            @WebParam(name = "personAge") int age
+    ) {
+
+        return -1;
+    }
+
     @WebMethod(operationName = "getAllPersons")
     public List<Person> getAllPersons() {
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
