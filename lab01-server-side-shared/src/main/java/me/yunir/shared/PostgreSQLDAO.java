@@ -1,9 +1,6 @@
 package me.yunir.shared;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -99,8 +96,27 @@ public class PostgreSQLDAO {
         return persons;
     }
 
-    public int addPersons(String name, String surname, String email, String phone, int age) {
-        return 0;
+    public long addPersons(String name, String surname, String email, String phone, int age) {
+        String sqlInsert = String.format(
+                "INSERT INTO customers(name, surname, email, phone, age) values ('%s', '%s', '%s', '%s', %d);",
+                name, surname, email, phone, age);
+        try (PreparedStatement stmt = dbConnection.prepareStatement(sqlInsert, Statement.RETURN_GENERATED_KEYS)) {
+            int affectedRows = stmt.executeUpdate();
+            if (affectedRows == 0) {
+                throw new SQLException("Creating user failed, no rows affected.");
+            }
+            try (ResultSet generatedKeys = stmt.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    return generatedKeys.getLong(1);
+                }
+                else {
+                    throw new SQLException("Creating user failed, no ID obtained.");
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PostgreSQLDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
     }
 
     public int changePersons(int id, String name, String surname, String email, String phone, int age) {

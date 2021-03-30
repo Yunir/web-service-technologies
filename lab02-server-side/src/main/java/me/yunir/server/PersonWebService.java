@@ -1,7 +1,6 @@
 package me.yunir.server;
 
 import me.yunir.shared.Person;
-import me.yunir.shared.PersonWebServiceInterface;
 import me.yunir.shared.PostgreSQLDAO;
 
 import javax.jws.WebMethod;
@@ -20,7 +19,7 @@ import static me.yunir.server.ConnectionUtil.getConnection;
 public class PersonWebService {
 
     @WebMethod(operationName = "addPerson")
-    public int addPerson(
+    public long addPerson(
             @WebParam(name = "personName") String name,
             @WebParam(name = "personSurname") String surname,
             @WebParam(name = "personEmail") String email,

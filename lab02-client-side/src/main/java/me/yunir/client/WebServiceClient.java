@@ -20,24 +20,14 @@ public class WebServiceClient {
                     ", age: " + person.getAge());
         }
         System.out.println("Total persons: " + persons.size());
-        persons = personService.getPersonWebServicePort().getPersonsByEmail("Марк@яндекс.ру");
-        for (Person person : persons) {
-            System.out.println("name: " + person.getName() +
-                    ", surname: " + person.getSurname() +
-                    ", email: " + person.getEmail() +
-                    ", phone: " + person.getPhone() +
-                    ", age: " + person.getAge());
-        }
-        System.out.println("Total persons: " + persons.size());
-        persons = personService.getPersonWebServicePort().getPersonsByAge("29");
-        for (Person person : persons) {
-            System.out.println("name: " + person.getName() +
-                    ", surname: " + person.getSurname() +
-                    ", email: " + person.getEmail() +
-                    ", phone: " + person.getPhone() +
-                    ", age: " + person.getAge());
-        }
-        System.out.println("Total persons: " + persons.size());
+        long personId = personService.getPersonWebServicePort().addPerson(
+                "John",
+                "Johnson",
+                "Jhon.Jhonson@gmail.com",
+                "+71112223344",
+                63);
+        System.out.println("Added person id: " + personId);
+
 
     }
 }
