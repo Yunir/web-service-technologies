@@ -16,6 +16,8 @@
         <module>lab01-server-side-standalone</module>
         <module>lab02-client-side</module>
         <module>lab02-server-side</module>
+        <module>lab03-client-side</module>
+        <module>lab03-server-side</module>
     </modules>
 
 </project>
