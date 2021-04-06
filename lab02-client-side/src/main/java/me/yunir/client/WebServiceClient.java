@@ -1,5 +1,6 @@
 package me.yunir.client;
 
+import com.sun.xml.internal.ws.fault.ServerSOAPFaultException;
 import me.yunir.server.Person;
 import me.yunir.server.PersonService;
 
@@ -37,7 +38,5 @@ public class WebServiceClient {
         System.out.println("Updated person id: " + personId + "; Operation code: " + opCode);
         opCode = personService.getPersonWebServicePort().removePerson(personId);
         System.out.println("Removed person id: " + personId + "; Operation code: " + opCode);
-
-
     }
 }

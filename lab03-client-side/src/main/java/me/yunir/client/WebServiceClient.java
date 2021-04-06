@@ -1,5 +1,8 @@
 package me.yunir.client;
 
+import com.sun.xml.internal.ws.fault.ServerSOAPFaultException;
+import me.yunir.server.IllegalArgumentException;
+import me.yunir.server.IllegalSQLOperationException;
 import me.yunir.server.Person;
 import me.yunir.server.PersonService;
 
@@ -20,24 +23,48 @@ public class WebServiceClient {
                     ", age: " + person.getAge());
         }
         System.out.println("Total persons: " + persons.size());
-        long personId = personService.getPersonWebServicePort().addPerson(
-                "John",
-                "Johnson",
-                "Jhon.Jhonson@gmail.com",
-                "+71112223344",
-                63);
-        System.out.println("Added person id: " + personId);
-        int opCode = personService.getPersonWebServicePort().changePerson(
-                personId,
-                "Mary",
-                "Fedorovna",
-                "Mary.Fedorovna@gmail.com",
-                "+71112223344",
-                63);
-        System.out.println("Updated person id: " + personId + "; Operation code: " + opCode);
-        opCode = personService.getPersonWebServicePort().removePerson(personId);
-        System.out.println("Removed person id: " + personId + "; Operation code: " + opCode);
+        try {
+            long personId = personService.getPersonWebServicePort().addPerson(
+                    "John",
+                    "Johnson",
+                    "Jhon.Jhonson@gmail.com",
+                    "+71112223344",
+                    63);
+            System.out.println("Added person id: " + personId);
+            int opCode = personService.getPersonWebServicePort().changePerson(
+                    personId,
+                    "Mary",
+                    "Fedorovna",
+                    "Mary.Fedorovna@gmail.com",
+                    "+71112223344",
+                    63);
+            System.out.println("Updated person id: " + personId + "; Operation code: " + opCode);
+            opCode = personService.getPersonWebServicePort().removePerson(personId);
+            System.out.println("Removed person id: " + personId + "; Operation code: " + opCode);
+        } catch (IllegalSQLOperationException | IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
 
+        try {
+            personService.getPersonWebServicePort().getPersonsByEmail("");
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
+        try {
+            personService.getPersonWebServicePort().addPerson(
+                    "John",
+                    "Johnson",
+                    "Jhon.Jhonson@gmail.com",
+                    "+71112223344",
+                    -9999);
+        } catch (IllegalArgumentException | IllegalSQLOperationException ex) {
+            System.out.println(ex.getMessage());
+        }
+        try {
+            personService.getPersonWebServicePort().removePerson(999);
+        } catch (IllegalSQLOperationException ex) {
+            System.out.println(ex.getMessage());
+        }
 
     }
 }
