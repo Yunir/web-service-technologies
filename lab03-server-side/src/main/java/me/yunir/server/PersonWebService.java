@@ -53,32 +53,44 @@ public class PersonWebService {
     }
 
     @WebMethod(operationName = "getPersonsByName")
-    public List<Person> getPersonsByName(@WebParam(name = "personName") String name) {
+    public List<Person> getPersonsByName(@WebParam(name = "personName") String name) throws IllegalArgumentException {
+        validateArgument(name, "personName");
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
         return dao.getPersonsByName(name);
     }
 
     @WebMethod(operationName = "getPersonsBySurname")
-    public List<Person> getPersonsBySurname(@WebParam(name = "personSurname") String surname) {
+    public List<Person> getPersonsBySurname(@WebParam(name = "personSurname") String surname) throws IllegalArgumentException {
+        validateArgument(surname, "personSurname");
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
         return dao.getPersonsBySurname(surname);
     }
 
     @WebMethod(operationName = "getPersonsByEmail")
-    public List<Person> getPersonsByEmail(@WebParam(name = "personEmail") String email) {
+    public List<Person> getPersonsByEmail(@WebParam(name = "personEmail") String email) throws IllegalArgumentException {
+        validateArgument(email, "personEmail");
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
         return dao.getPersonsByEmail(email);
     }
 
     @WebMethod(operationName = "getPersonsByPhone")
-    public List<Person> getPersonsByPhone(@WebParam(name = "personPhone") String phone) {
+    public List<Person> getPersonsByPhone(@WebParam(name = "personPhone") String phone) throws IllegalArgumentException {
+        validateArgument(phone, "personPhone");
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
         return dao.getPersonsByPhone(phone);
     }
 
     @WebMethod(operationName = "getPersonsByAge")
-    public List<Person> getPersonsByAge(@WebParam(name = "personAge") String age) {
+    public List<Person> getPersonsByAge(@WebParam(name = "personAge") String age) throws IllegalArgumentException {
+        validateArgument(age, "personAge");
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
         return dao.getPersonsByAge(age);
+    }
+
+    private void validateArgument(String argument, String argumentName) throws IllegalArgumentException {
+        if (argument == null || argument.trim().isEmpty()) {
+            PersonServiceFault fault = PersonServiceFault.defaultInstance();
+            throw new IllegalArgumentException(argumentName + " is not specified", fault);
+        }
     }
 }
