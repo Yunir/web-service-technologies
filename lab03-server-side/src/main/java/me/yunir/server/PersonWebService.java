@@ -1,8 +1,5 @@
 package me.yunir.server;
 
-import me.yunir.shared.Person;
-import me.yunir.shared.PostgreSQLDAO;
-
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
 import javax.jws.WebService;
