@@ -96,7 +96,7 @@ public class PostgreSQLDAO {
         return persons;
     }
 
-    public long addPersons(String name, String surname, String email, String phone, int age) {
+    public long addPersons(String name, String surname, String email, String phone, int age) throws IllegalSQLOperationException {
         String sqlInsert = String.format(
                 "INSERT INTO customers(name, surname, email, phone, age) values ('%s', '%s', '%s', '%s', %d);",
                 name, surname, email, phone, age);
@@ -114,11 +114,14 @@ public class PostgreSQLDAO {
             }
         } catch (SQLException ex) {
             Logger.getLogger(PostgreSQLDAO.class.getName()).log(Level.SEVERE, null, ex);
-            return -1;
+            throw new IllegalSQLOperationException(
+                    ex.getMessage(),
+                    PersonServiceFault.defaultInstance()
+            );
         }
     }
 
-    public int changePersons(long id, String name, String surname, String email, String phone, int age) {
+    public int changePersons(long id, String name, String surname, String email, String phone, int age) throws IllegalSQLOperationException {
         String sql = "UPDATE customers SET name=?, surname=?, email=?, phone=?, age=? WHERE id=?";
         try (PreparedStatement stmt = dbConnection.prepareStatement(sql)) {
             stmt.setString(1, name);
@@ -135,11 +138,14 @@ public class PostgreSQLDAO {
             return 0;
         } catch (SQLException ex) {
             Logger.getLogger(PostgreSQLDAO.class.getName()).log(Level.SEVERE, null, ex);
-            return -1;
+            throw new IllegalSQLOperationException(
+                    ex.getMessage(),
+                    PersonServiceFault.defaultInstance()
+            );
         }
     }
 
-    public int removePersons(long id) {
+    public int removePersons(long id) throws IllegalSQLOperationException {
         String sql = "DELETE FROM customers WHERE id=?";
         try (PreparedStatement stmt = dbConnection.prepareStatement(sql)) {
             stmt.setLong(1, id);
@@ -150,7 +156,10 @@ public class PostgreSQLDAO {
             return 0;
         } catch (SQLException ex) {
             Logger.getLogger(PostgreSQLDAO.class.getName()).log(Level.SEVERE, null, ex);
-            return -1;
+            throw new IllegalSQLOperationException(
+                    ex.getMessage(),
+                    PersonServiceFault.defaultInstance()
+            );
         }
     }
 }

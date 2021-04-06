@@ -22,7 +22,7 @@ public class PersonWebService {
             @WebParam(name = "personEmail") String email,
             @WebParam(name = "personPhone") String phone,
             @WebParam(name = "personAge") int age
-    ) throws IllegalArgumentException {
+    ) throws IllegalArgumentException, IllegalSQLOperationException {
         validateArgument(name, "personName");
         validateArgument(surname, "personSurname");
         validateArgument(email, "personEmail");
@@ -43,7 +43,7 @@ public class PersonWebService {
             @WebParam(name = "personEmail") String email,
             @WebParam(name = "personPhone") String phone,
             @WebParam(name = "personAge") int age
-    ) throws IllegalArgumentException {
+    ) throws IllegalArgumentException, IllegalSQLOperationException {
         validateArgument(name, "personName");
         validateArgument(surname, "personSurname");
         validateArgument(email, "personEmail");
@@ -57,7 +57,7 @@ public class PersonWebService {
     }
 
     @WebMethod(operationName = "removePerson")
-    public int removePerson(@WebParam(name = "personId") long id) {
+    public int removePerson(@WebParam(name = "personId") long id) throws IllegalSQLOperationException {
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
         return dao.removePersons(id);
     }
