@@ -22,7 +22,15 @@ public class PersonWebService {
             @WebParam(name = "personEmail") String email,
             @WebParam(name = "personPhone") String phone,
             @WebParam(name = "personAge") int age
-    ) {
+    ) throws IllegalArgumentException {
+        validateArgument(name, "personName");
+        validateArgument(surname, "personSurname");
+        validateArgument(email, "personEmail");
+        validateArgument(phone, "personPhone");
+        if (age <= 0 || age > 200) {
+            PersonServiceFault fault = PersonServiceFault.defaultInstance();
+            throw new IllegalArgumentException("personAge is specified incorrectly, please use positive number less than 200", fault);
+        }
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
         return dao.addPersons(name, surname, email, phone, age);
     }
@@ -35,7 +43,15 @@ public class PersonWebService {
             @WebParam(name = "personEmail") String email,
             @WebParam(name = "personPhone") String phone,
             @WebParam(name = "personAge") int age
-    ) {
+    ) throws IllegalArgumentException {
+        validateArgument(name, "personName");
+        validateArgument(surname, "personSurname");
+        validateArgument(email, "personEmail");
+        validateArgument(phone, "personPhone");
+        if (age <= 0 || age > 200) {
+            PersonServiceFault fault = PersonServiceFault.defaultInstance();
+            throw new IllegalArgumentException("personAge is specified incorrectly, please use positive number less than 200", fault);
+        }
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
         return dao.changePersons(id, name, surname, email, phone, age);
     }
