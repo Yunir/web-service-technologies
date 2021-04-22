@@ -2,6 +2,7 @@ package me.yunir.shared;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -75,6 +76,36 @@ public class PostgreSQLDAO {
         List<Person> persons = new ArrayList<>();
         try (Statement stmt = dbConnection.createStatement()) {
             ResultSet rs = stmt.executeQuery("select * from customers where age='" + customAge + "'");
+            persons = processPersonsResultSet(rs);
+        } catch (SQLException ex) {
+            Logger.getLogger(PostgreSQLDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return persons;
+    }
+
+    public List<Person> getPersonsCustom(String name, String surname, String email, String phone, String age) {
+        if (name == null && surname == null && email == null && phone == null && age == null)
+            return getPersons();
+        List<Person> persons = new ArrayList<>();
+        List<String> customs = new ArrayList<>();
+        if (name != null) {
+            customs.add("name='" + name + "'");
+        }
+        if (surname != null) {
+            customs.add("surname='" + surname + "'");
+        }
+        if (email != null) {
+            customs.add("email='" + email + "'");
+        }
+        if (phone != null) {
+            customs.add("phone='" + phone + "'");
+        }
+        if (age != null) {
+            customs.add("age='" + age + "'");
+        }
+        String customization = String.join(" AND ", customs);
+        try (Statement stmt = dbConnection.createStatement()) {
+            ResultSet rs = stmt.executeQuery("select * from customers where " + customization);
             persons = processPersonsResultSet(rs);
         } catch (SQLException ex) {
             Logger.getLogger(PostgreSQLDAO.class.getName()).log(Level.SEVERE, null, ex);

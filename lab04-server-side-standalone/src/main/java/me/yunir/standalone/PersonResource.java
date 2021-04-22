@@ -13,11 +13,12 @@ import static me.yunir.standalone.ConnectionUtil.getConnection;
 @Produces({MediaType.APPLICATION_JSON})
 public class PersonResource {
     @GET
-    public List<Person> getPersons(@QueryParam("name") String name) {
+    public List<Person> getPersons(@QueryParam("name") String name,
+                                   @QueryParam("surname") String surname,
+                                   @QueryParam("email") String email,
+                                   @QueryParam("phone") String phone,
+                                   @QueryParam("age") String age) {
         PostgreSQLDAO dao = new PostgreSQLDAO(getConnection());
-        if (name == null)
-            return dao.getPersons();
-        else
-            return dao.getPersonsByName(name);
+        return dao.getPersonsCustom(name, surname, email, phone, age);
     }
 }
