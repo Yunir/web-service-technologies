@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Thu Apr 22 21:28:15 MSK 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0178-fad6-f79b-000030fcacc8 
+on database directory /Users/yunir.salimzyanov/Documents/Projects/web-service-technologies/lab07-juddi/juddi-distro-3.3.9/juddi-tomcat-3.3.9/bin/target/juddi-derby-test-db with class loader java.net.URLClassLoader@26a1ab54 
+Loaded from file:/Users/yunir.salimzyanov/Documents/Projects/web-service-technologies/lab07-juddi/juddi-distro-3.3.9/juddi-tomcat-3.3.9/lib/derby-10.10.1.1.jar
+java.vendor=Amazon.com Inc.
+java.runtime.version=1.8.0_265-b01
+user.dir=/Users/yunir.salimzyanov/Documents/Projects/web-service-technologies/lab07-juddi/juddi-distro-3.3.9/juddi-tomcat-3.3.9/bin
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.15.7
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
