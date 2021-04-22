@@ -36,7 +36,7 @@ public class PersonResource {
     }
 
     @POST
-    public int changePerson(
+    public Integer changePerson(
             @QueryParam("id") long id,
             @QueryParam("name") String name,
             @QueryParam("surname") String surname,

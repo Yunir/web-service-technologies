@@ -43,8 +43,22 @@ public class App {
     }
 
     private static int changePerson(Client client, long id, String name, String surname, String email, String phone, int age) {
-        // TODO: implement REST-call
-        return 0;
+        WebResource webResource = client.resource(URL);
+        webResource = webResource.queryParam("id", String.valueOf(id));
+        webResource = webResource.queryParam("name", name);
+        webResource = webResource.queryParam("surname", surname);
+        webResource = webResource.queryParam("email", email);
+        webResource = webResource.queryParam("phone", phone);
+        webResource = webResource.queryParam("age", String.valueOf(age));
+
+        ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).post(ClientResponse.class);
+        if (response.getStatus() != ClientResponse.Status.OK.getStatusCode()) {
+            throw new IllegalStateException("Request failed");
+        }
+        GenericType<Integer> type = new GenericType<Integer>() {
+        };
+        Integer opCode = response.getEntity(type);
+        return opCode != null ? opCode : 0;
     }
 
     private static long addPerson(Client client, String name, String surname, String email, String phone, int age) {
