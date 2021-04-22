@@ -22,6 +22,8 @@
         <module>lab04-server-side-shared</module>
         <module>lab04-server-side-j2ee</module>
         <module>lab04-server-side-standalone</module>
+        <module>lab05-client-side</module>
+        <module>lab05-server-side</module>
     </modules>
 
 </project>
