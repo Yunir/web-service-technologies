@@ -1,8 +1,11 @@
 package me.yunir.shared;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * POJO, соответствует сущности, описанной в таблице persons базы данных
  */
+@XmlRootElement(name = "person")
 public class Person {
     private String name;
     private String surname;
