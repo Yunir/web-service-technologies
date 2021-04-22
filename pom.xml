@@ -18,6 +18,10 @@
         <module>lab02-server-side</module>
         <module>lab03-client-side</module>
         <module>lab03-server-side</module>
+        <module>lab04-client-side</module>
+        <module>lab04-server-side-shared</module>
+        <module>lab04-server-side-j2ee</module>
+        <module>lab04-server-side-standalone</module>
     </modules>
 
 </project>
