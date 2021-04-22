@@ -28,9 +28,17 @@ public class PersonResource {
             @QueryParam("email") String email,
             @QueryParam("phone") String phone,
             @QueryParam("age") String age
-    ) {
-        if (name == null || surname == null || email == null || phone == null || age == null)
-            return -1L;
+    ) throws IllegalArgumentException {
+        if (name == null
+                || surname == null
+                || email == null
+                || phone == null
+                || age == null
+                || name.isEmpty()
+                || surname.isEmpty()
+                || email.isEmpty()
+                || phone.isEmpty())
+            throw IllegalArgumentException.DEFAULT_INSTANCE;
         PostgreSQLDAO dao = new PostgreSQLDAO(ConnectionUtil.getConnection());
         return dao.addPersons(name, surname, email, phone, Integer.parseInt(age));
     }
@@ -43,15 +51,24 @@ public class PersonResource {
             @QueryParam("email") String email,
             @QueryParam("phone") String phone,
             @QueryParam("age") int age
-    ) {
-        if (name == null || surname == null || email == null || phone == null)
-            return -1;
+    ) throws IllegalArgumentException {
+        if (name == null
+                || surname == null
+                || email == null
+                || phone == null
+                || name.isEmpty()
+                || surname.isEmpty()
+                || email.isEmpty()
+                || phone.isEmpty())
+            throw IllegalArgumentException.DEFAULT_INSTANCE;
         PostgreSQLDAO dao = new PostgreSQLDAO(ConnectionUtil.getConnection());
         return dao.changePersons(id, name, surname, email, phone, age);
     }
 
     @DELETE
-    public int removePerson(@QueryParam("id") long id) {
+    public int removePerson(@QueryParam("id") long id) throws IllegalArgumentException {
+        if (id < 0)
+            throw IllegalArgumentException.DEFAULT_INSTANCE;
         PostgreSQLDAO dao = new PostgreSQLDAO(ConnectionUtil.getConnection());
         return dao.removePersons(id);
     }

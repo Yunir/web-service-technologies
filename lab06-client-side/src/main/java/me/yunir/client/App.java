@@ -22,18 +22,18 @@ public class App {
                 "John",
                 "Johnson",
                 "Jhon.Jhonson@gmail.com",
-                "+71112223344",
+                "",
                 63);
         System.out.println("Added person id: " + personId);
         int opCode = changePerson(client,
                 personId,
                 "Mary",
-                "Fedorovna",
+                "",
                 "Mary.Fedorovna@gmail.com",
                 "+71112223344",
                 63);
         System.out.println("Updated person id: " + personId + "; Operation code: " + opCode);
-        opCode = removePerson(client, personId);
+        opCode = removePerson(client, -1);
         System.out.println("Removed person id: " + personId + "; Operation code: " + opCode);
     }
 
