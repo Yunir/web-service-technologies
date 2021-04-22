@@ -18,14 +18,14 @@ public class App {
         printList(getAllPersons(client, null));
         System.out.println();
         printList(getAllPersons(client, "Владимир"));
-        long personId = addPerson(
+        long personId = addPerson(client,
                 "John",
                 "Johnson",
                 "Jhon.Jhonson@gmail.com",
                 "+71112223344",
                 63);
         System.out.println("Added person id: " + personId);
-        int opCode = changePerson(
+        int opCode = changePerson(client,
                 personId,
                 "Mary",
                 "Fedorovna",
@@ -33,23 +33,35 @@ public class App {
                 "+71112223344",
                 63);
         System.out.println("Updated person id: " + personId + "; Operation code: " + opCode);
-        opCode = removePerson(personId);
+        opCode = removePerson(client, personId);
         System.out.println("Removed person id: " + personId + "; Operation code: " + opCode);
     }
 
-    private static int removePerson(long id) {
+    private static int removePerson(Client client, long id) {
         // TODO: implement REST-call
         return 0;
     }
 
-    private static int changePerson(long id, String name, String surname, String email, String number, int age) {
+    private static int changePerson(Client client, long id, String name, String surname, String email, String phone, int age) {
         // TODO: implement REST-call
         return 0;
     }
 
-    private static long addPerson(String name, String surname, String email, String number, int age) {
-        // TODO: implement REST-call
-        return 0;
+    private static long addPerson(Client client, String name, String surname, String email, String phone, int age) {
+        WebResource webResource = client.resource(URL);
+        webResource = webResource.queryParam("name", name);
+        webResource = webResource.queryParam("surname", surname);
+        webResource = webResource.queryParam("email", email);
+        webResource = webResource.queryParam("phone", phone);
+        webResource = webResource.queryParam("age", String.valueOf(age));
+
+        ClientResponse response = webResource.accept(MediaType.APPLICATION_JSON).put(ClientResponse.class);
+        if (response.getStatus() != ClientResponse.Status.OK.getStatusCode()) {
+            throw new IllegalStateException("Request failed");
+        }
+        GenericType<Long> type = new GenericType<Long>() {
+        };
+        return response.getEntity(type);
     }
 
 

@@ -22,17 +22,17 @@ public class PersonResource {
     }
 
     @PUT
-    public long addPerson(
+    public Long addPerson(
             @QueryParam("name") String name,
             @QueryParam("surname") String surname,
             @QueryParam("email") String email,
             @QueryParam("phone") String phone,
-            @QueryParam("age") int age
+            @QueryParam("age") String age
     ) {
-        if (name == null || surname == null || email == null || phone == null)
-            return -1;
+        if (name == null || surname == null || email == null || phone == null || age == null)
+            return -1L;
         PostgreSQLDAO dao = new PostgreSQLDAO(ConnectionUtil.getConnection());
-        return dao.addPersons(name, surname, email, phone, age);
+        return dao.addPersons(name, surname, email, phone, Integer.parseInt(age));
     }
 
     @POST
