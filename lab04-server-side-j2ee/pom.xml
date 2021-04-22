@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>me.yunir</groupId>
-            <artifactId>lab01-server-side-shared</artifactId>
+            <artifactId>lab04-server-side-shared</artifactId>
             <version>1.5</version>
         </dependency>
         <dependency>
