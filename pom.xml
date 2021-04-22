@@ -24,6 +24,8 @@
         <module>lab04-server-side-standalone</module>
         <module>lab05-client-side</module>
         <module>lab05-server-side</module>
+        <module>lab06-client-side</module>
+        <module>lab06-server-side</module>
     </modules>
 
 </project>
