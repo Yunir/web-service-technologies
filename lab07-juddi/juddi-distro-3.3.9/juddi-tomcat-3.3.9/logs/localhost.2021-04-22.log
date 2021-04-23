@@ -1,7 +1,0 @@
-22-Apr-2021 21:28:14.034 INFO [main] org.apache.catalina.core.ApplicationContext.log No Spring WebApplicationInitializer types detected on classpath
-22-Apr-2021 21:28:14.045 INFO [main] org.apache.catalina.core.ApplicationContext.log Initializing Spring root WebApplicationContext
-22-Apr-2021 21:28:20.875 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: contextInitialized()
-22-Apr-2021 21:28:20.875 INFO [main] org.apache.catalina.core.ApplicationContext.log SessionListener: contextInitialized()
-22-Apr-2021 21:28:20.876 INFO [main] org.apache.catalina.core.ApplicationContext.log ContextListener: attributeAdded('StockTicker', 'async.Stockticker@58288d3')
-22-Apr-2021 21:28:22.917 INFO [main] org.apache.catalina.core.ApplicationContext.log No Spring WebApplicationInitializer types detected on classpath
-22-Apr-2021 21:28:22.925 INFO [main] org.apache.catalina.core.ApplicationContext.log Initializing Spring root WebApplicationContext

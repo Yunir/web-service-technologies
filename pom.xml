@@ -26,6 +26,7 @@
         <module>lab05-server-side</module>
         <module>lab06-client-side</module>
         <module>lab06-server-side</module>
+        <module>lab07-juddi</module>
     </modules>
 
 </project>
